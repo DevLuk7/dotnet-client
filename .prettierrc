@@ -1,3 +1,16 @@
 {
-  "singleQuote": true
+  "singleQuote": true,
+  "importOrder": [
+    "^@angular$",
+    "rxjs",
+    "^w",
+    "^(@shared|@core|@env|@test-utilities)(/.*|$)",
+    "^(business-logic|@ui)(/.*|$)",
+    "^[./|~/]"
+  ],
+  "importOrderParserPlugins": ["decorators-legacy", "typescript"],
+  "plugins": [
+    "@trivago/prettier-plugin-sort-imports",
+    "prettier-plugin-organize-imports"
+  ]
 }
