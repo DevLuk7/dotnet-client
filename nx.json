@@ -64,5 +64,5 @@
       "style": "scss"
     }
   },
-  "defaultProject": "org"
+  "defaultProject": "dotnet-client"
 }

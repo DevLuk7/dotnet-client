@@ -14,7 +14,7 @@
           "error",
           {
             "type": "attribute",
-            "prefix": "org",
+            "prefix": "dotnet-client",
             "style": "camelCase"
           }
         ],
@@ -22,7 +22,7 @@
           "error",
           {
             "type": "element",
-            "prefix": "org",
+            "prefix": "dotnet-client",
             "style": "kebab-case"
           }
         ]

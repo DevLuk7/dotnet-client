@@ -5,10 +5,10 @@ import { NxWelcomeComponent } from './nx-welcome.component';
 @Component({
   standalone: true,
   imports: [NxWelcomeComponent, RouterModule],
-  selector: 'org-root',
+  selector: 'dotnet-client-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  title = 'org';
+  title = 'dotnet-client';
 }

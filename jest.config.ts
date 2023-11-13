@@ -1,9 +1,9 @@
 /* eslint-disable */
 export default {
-  displayName: 'org',
+  displayName: 'dotnet-client',
   preset: './jest.preset.js',
   setupFilesAfterEnv: ['<rootDir>/src/test-setup.ts'],
-  coverageDirectory: './coverage/org',
+  coverageDirectory: './coverage/dotnet-client',
   transform: {
     '^.+\\.(ts|mjs|js|html)$': [
       'jest-preset-angular',
