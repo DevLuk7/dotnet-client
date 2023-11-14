@@ -1,7 +1,8 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input, inject } from '@angular/core';
+import { AfterViewInit, Component, Input, inject } from '@angular/core';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import 'prismjs';
+import 'prismjs/components/prism-typescript';
 
 @Component({
   selector: 'dotnet-client-code-block',
@@ -9,9 +10,7 @@ import 'prismjs';
   imports: [CommonModule],
   template: `
     <pre>
-      <code class="hljs language-ts" *ngIf="codeToShow as html">
-          {{ html }}
-      </code>
+      <code class="hljs language-typescript" *ngIf="codeToShow as html" [innerHTML]="html"></code>
     </pre>
   `,
   styles: `
@@ -20,7 +19,7 @@ import 'prismjs';
     }
   `,
 })
-export class CodeBlockComponent {
+export class CodeBlockComponent implements AfterViewInit {
   private readonly domSanitizer = inject(DomSanitizer);
 
   codeToShow: SafeHtml | null = null;
@@ -28,5 +27,10 @@ export class CodeBlockComponent {
   @Input()
   public set codeText(v: string) {
     this.codeToShow = v ? this.domSanitizer.bypassSecurityTrustHtml(v) : null;
+    (window as any).Prism?.highlightAll();
+  }
+
+  ngAfterViewInit(): void {
+    (window as any).Prism?.highlightAll();
   }
 }

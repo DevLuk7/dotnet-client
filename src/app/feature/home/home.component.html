@@ -1,12 +1,13 @@
 <div class="flex justify-center">
-  <dotnet-client-code-block
-    class="flex-1"
-    [codeText]="tsCode"
-  ></dotnet-client-code-block>
-  <dotnet-client-code-block
-    class="flex-1"
-    [codeText]="unitTestCode"
-  ></dotnet-client-code-block>
+  <div class="flex-1">
+    <dotnet-client-code-block [codeText]="tsCode" />
+  </div>
+  <div class="flex-1">
+    <div class="h-full flex justify-center items-center" *ngIf="loading">
+      <dotnet-client-spinner />
+    </div>
+    <dotnet-client-code-block *ngIf="unitTestCode" [codeText]="unitTestCode" />
+  </div>
 </div>
 
 <div class="flex justify-center m-4">
