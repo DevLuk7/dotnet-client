@@ -1,10 +1,13 @@
 import { CommonModule } from '@angular/common';
 import { Component, inject } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { finalize, map } from 'rxjs';
 import { OpenAiService } from 'src/app/data-access/open-ai.service';
 import { ButtonComponent } from 'src/app/ui/button.component';
 import { CodeBlockComponent } from 'src/app/ui/code-block.component';
+import { CodeEditorComponent } from 'src/app/ui/code-editor.component';
 import { SpinnerComponent } from 'src/app/ui/spinner.component';
+import { SvgJestComponent } from 'src/app/ui/svg-jest.component';
 
 @Component({
   selector: 'dotnet-client-home',
@@ -14,6 +17,10 @@ import { SpinnerComponent } from 'src/app/ui/spinner.component';
     CodeBlockComponent,
     ButtonComponent,
     SpinnerComponent,
+    CodeEditorComponent,
+    FormsModule,
+    ReactiveFormsModule,
+    SvgJestComponent,
   ],
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
@@ -21,34 +28,24 @@ import { SpinnerComponent } from 'src/app/ui/spinner.component';
 export class HomeComponent {
   private readonly openAiService = inject(OpenAiService);
 
-  tsCode = `
-    import { CommonModule } from '@angular/common';
-    import { Component, inject } from '@angular/core';
-    import { OpenAiService } from 'src/app/data-access/open-ai.service';
-    import { ButtonComponent } from 'src/app/ui/button.component';
-    import { CodeBlockComponent } from 'src/app/ui/code-block.component';
-    
-    @Component({
-      selector: 'dotnet-client-home',
-      standalone: true,
-      imports: [CommonModule, CodeBlockComponent, ButtonComponent],
-      templateUrl: './home.component.html',
-      styleUrls: ['./home.component.scss'],
-    })
-    export class HomeComponent {
-      private readonly openAiService = inject(OpenAiService);
-    
-      tsCode = '';
-    
-      unitTestCode = '';
-    
-      generateUnitTest() {
-        this.openAiService
-          .getUnitTest(this.tsCode)
-          .subscribe((res) => (this.unitTestCode = res));
-      }
-    }
-  `;
+  tsCode = `@Component({
+  standalone: true,
+  selector: 'todo-list-item',
+  templateUrl: './todo-list-item.component.html',
+  styleUrl: './todo-list-item.component.css',
+})
+export class TodoListItem {
+  taskTitle = '';
+  isComplete = false;
+
+  completeTask() {
+    this.isComplete = true;
+  }
+  
+  updateTitle(newTitle: string) {
+    this.taskTitle = newTitle;
+  }
+}`;
 
   unitTestCode = '';
 

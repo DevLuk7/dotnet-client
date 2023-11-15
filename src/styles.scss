@@ -5,7 +5,11 @@
 @import 'prismjs/plugins/toolbar/prism-toolbar.css';
 @import 'prismjs/themes/prism-tomorrow.css';
 
+@import url('https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500&display=swap');
+
 body {
   margin: 0;
-  @apply bg-gray-700;
+  background: oklch(16.93% .004 285.95);
+  color: oklch(0.9881 0 0);
+  font-family: 'Inter Tight', sans-serif;
 }

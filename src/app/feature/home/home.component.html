@@ -1,17 +1,31 @@
-<div class="flex justify-center">
-  <div class="flex-1">
-    <dotnet-client-code-block [codeText]="tsCode" />
+<div class="h-screen">
+  <div class="flex flex-col justify-center items-center h-1/6 p-4 gap-2">
+    <h3 class="flex items-center text-3xl">
+      AI unit test generator in <svg class="h-8 w-8 m-2" jest></svg> from
+      <img
+        alt="Angular logo"
+        src="../../../assets/icon_angular_gradient.png"
+        class="h-10 w-10 m-2"
+      />
+      code
+    </h3>
+    <dotnet-client-button (click)="generateUnitTest()"
+      >Generate</dotnet-client-button
+    >
   </div>
-  <div class="flex-1">
-    <div class="h-full flex justify-center items-center" *ngIf="loading">
-      <dotnet-client-spinner />
+  <div class="flex justify-center h-5/6 p-4">
+    <div class="flex-1">
+      <dotnet-client-code-editor [(ngModel)]="tsCode" />
     </div>
-    <dotnet-client-code-block *ngIf="unitTestCode" [codeText]="unitTestCode" />
+    <div class="flex-1">
+      <div class="h-full flex justify-center items-center" *ngIf="loading">
+        <dotnet-client-spinner />
+      </div>
+      <dotnet-client-code-editor
+        *ngIf="unitTestCode"
+        [(ngModel)]="unitTestCode"
+        readOnly
+      />
+    </div>
   </div>
-</div>
-
-<div class="flex justify-center m-4">
-  <dotnet-client-button (click)="generateUnitTest()"
-    >Generate</dotnet-client-button
-  >
 </div>
